@@ -17,16 +17,11 @@ bspc config gapless_monocle     	 true
 bspc config focus_follows_pointer	 true
 bspc config click_to_focus		 true
 bspc config top_padding 28
-#bspc rule -a \* node=focused split_dir=east
 bspc config center_pseudo_tiled 	false
 bspc config single_monocle 		true
 bspc config pointer_modifier mod1
 
-xsetroot -solid "#000000"
-#sh .screenlayout/default.sh &
 feh --bg-fill ~/Pictures/solid.png &
-#compton -c -o 0.3 -r 8 & 
 compton --config ~/.config/compton.conf &
 xsetroot -cursor_name left_ptr &
 polybar top &
-bspc config top_padding 28
