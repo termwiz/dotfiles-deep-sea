@@ -1,0 +1,218 @@
+[colors]
+background = #2B2C33
+background-alt = #f0f0f0
+foreground = #f0f0f0
+foreground-alt = #2d2d2d
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/top]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 20
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 6
+border-color = ${colors.background}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = gohufont:pixelsize=13;2
+font-1 = siji:size=9:antialias=false;2
+font-2 = sans:size=11:antialias=false;2
+
+modules-left = system bspwm xwindow
+modules-center = 
+modules-right = cpu ram battery wlan time
+
+tray-position = right
+tray-padding = 2
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:16:...%
+format-prefix = " "
+format-prefix-foreground = #EAEFA6
+
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-default = ♟
+
+label-focused = %icon%
+label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.foreground-alt}
+
+label-focused-padding = 1
+
+label-occupied = %icon%
+label-occupied-padding = 1
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = 
+label-empty-foreground = #666
+label-empty-padding = 1
+
+
+[module/system]
+type = custom/script
+exec = echo " "
+format = <label>
+label = " Debian "
+label-background = #6D8EC1
+format-prefix = " ⚓ "
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground-alt}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "  "
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground-alt}
+label =  " %percentage:2%% "
+label-background = #6D8EC1
+
+
+[module/ram]
+type = internal/memory
+interval = 2
+format-prefix = "  "
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground-alt}
+label-background = #6D8EC1
+label = " %percentage_used%% "
+
+
+[module/wlan]
+type = internal/network
+interface = wlan0
+interval = 3.0
+
+format-connected = <ramp-signal><label-connected>
+label-connected = "WiFi"
+;label-connected = %essid%
+label-connected-background = #6D8EC1
+label-connected-padding = 1
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = "  "
+ramp-signal-1 = "  "
+ramp-signal-2 = "  "
+ramp-signal-3 = "  "
+ramp-signal-4 = "  "
+ramp-signal-background = ${colors.background-alt}
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/time]
+type = internal/date
+interval = 5
+
+time = " %H:%M "
+time-alt = " %d/%m-%y "
+
+format-prefix = "  "
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %time%
+label-background = #6D8EC1
+
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "  "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+label-discharging-background = #6D8EC1
+label-charging-background = #6D8EC1
+label-charging-padding = 1
+label-discharging-padding = 1
+format-charging = <animation-charging><label-charging>
+
+format-discharging = <ramp-capacity><label-discharging>
+
+format-full-prefix = "  "
+format-full-prefix-background = ${colors.background-alt}
+format-full-prefix-foreground = ${colors.foreground-alt}
+
+ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-background = ${colors.background-alt}
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = "  "
+animation-charging-1 = "  "
+animation-charging-2 = "  "
+animation-charging-background = ${colors.background-alt}
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
